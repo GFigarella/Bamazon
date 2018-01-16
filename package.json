@@ -1,0 +1,27 @@
+{
+  "name": "bamazon",
+  "version": "1.0.0",
+  "description": "Bamazon program. You can log in as a user, manager or supervisor, and depending on what you log in as, you have different options",
+  "main": "bamazon.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GFigarella/Bamazon.git"
+  },
+  "keywords": [
+    "bamazon",
+    "node"
+  ],
+  "author": "Gabriel Figarella",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GFigarella/Bamazon/issues"
+  },
+  "homepage": "https://github.com/GFigarella/Bamazon#readme",
+  "dependencies": {
+    "inquirer": "^5.0.0",
+    "mysql": "^2.15.0"
+  }
+}
