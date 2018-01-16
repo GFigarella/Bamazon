@@ -25,7 +25,7 @@ function firstPrompt() {
         name: "first",
         type: "rawlist",
         message: "What would you like to log in as?",
-        choices: ["CONSUMER", "MANAGER", "SUPERVISOR"]
+        choices: ["CONSUMER", "MANAGER", "SUPERVISOR", "QUIT"]
     }).then(answers => {
         if (answers.first === "CONSUMER") {
             //Show the table of items so that the user knows what's available for sale
@@ -48,6 +48,9 @@ function firstPrompt() {
         }
         else if (answers.first === "SUPERVISOR") {
             console.log("Coming soon");
+            connection.end();
+        }
+        else if (answers.first == "QUIT"){
             connection.end();
         }
     })
@@ -74,13 +77,13 @@ function consumer(){
             //if there's enough items in stock, confirm purchase
             else{
                 console.log("\n" + answers.number + " " + res[0].item +"(s/es/ies) purchased!\n");
-                var newAmount = res[0].item - answers.number;
+                var newAmount = parseInt(res[0].quantity) - parseInt(answers.number);
                 //update database after purchase
                 connection.query(
-                    "UPDATE auctions SET ? WHERE ?",
+                    "UPDATE items_for_sale SET ? WHERE ?",
                     [
                       {
-                        quantity: answers.bid
+                        quantity: newAmount
                       },
                       {
                         id: answers.id
@@ -88,8 +91,8 @@ function consumer(){
                     ],
                     function(error) {
                       if (error) throw err;
-                      console.log("Bid placed successfully!");
-                      start();
+                      //call the main bamazon function again
+                      firstPrompt();
                     }
                 );
             }
