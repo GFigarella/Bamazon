@@ -17,4 +17,6 @@ A supervisor can also create new departments in which to sell more items.
 ###### WIP
 Manager and supervisor access to the store are still in development
 
-Using the store
+### Using the store
+
+![alt text](./bamazon.gif "Logo Title Text 1")
